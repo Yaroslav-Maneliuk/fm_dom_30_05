@@ -2,10 +2,10 @@
 
 //create DB with image: квадратная, портретная, альбомная
 const imagesDB = [
-  "https://englishlib.org/dictionary/img/wlibrary/s/60478f3f2c4d63.37543295.jpg",
-  "https://www.prototype-ui.com/wp-content/uploads/2017/03/pERnQ5-772x347.jpg",
-  "https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/calm-red-sea-1x1-hannes-cmarits.jpg",
-];
+  "https://www.alessandromichelazzi.com/wp-content/uploads/2018/09/OnePlus-6-Portrait-Session-professional-photographer-15.jpg",
+  "https://besthqwallpapers.com/Uploads/22-11-2017/29941/thumb2-sea-landscape-waves-beach-sand-clouds.jpg",
+  "https://www.424salt.com/wp/wp-content/uploads/2017/03/dead-sea-1x1.jpg",
+]; 
 
 //create slider
 const slider = new Slider(imagesDB);
@@ -18,18 +18,18 @@ const [prevBtn, nextBtn] = document.querySelectorAll(
   ".slider-container>button"
 );
 
-prevBtn.addEventListener('click', ()=>{
+prevBtn.addEventListener("click", () => {
   slider.currentIndex = slider.prev();
   updateView();
-})
+});
 
-nextBtn.addEventListener('click', ()=>{
+nextBtn.addEventListener("click", () => {
   slider.currentIndex = slider.next();
   updateView();
-})
+});
 
 //утсановить путь в атрибут src
-function updateView(){
-  image.setAttribute('src', slider.currentSlide);
+function updateView() {
+  image.setAttribute("src", slider.currentSlide);
 }
 updateView();
