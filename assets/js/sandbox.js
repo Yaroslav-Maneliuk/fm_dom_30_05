@@ -32,8 +32,8 @@
 
 //---------------------------------------//
 
-const createAdder = ((n) => (m) => (n += m));
+// const createAdder = ((n) => (m) => (n += m));
 
-const adder = createAdder(100);
-console.log(adder(15));
-console.log(adder(10));
+// const adder = createAdder(100);
+// console.log(adder(15));
+// console.log(adder(10));
