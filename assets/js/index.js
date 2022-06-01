@@ -11,7 +11,7 @@ const imagesDB = [
 const slider = new Slider(imagesDB);
 
 //img
-const img = document.querySelector(".slide>img");
+const image = document.querySelector(".slide>img");
 
 //prev,next
 const [prevBtn, nextBtn] = document.querySelectorAll(

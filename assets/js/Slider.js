@@ -24,9 +24,9 @@ class Slider {
     return this._images[this._currentIndex]; //array[0]
   }
   next() {
-    return this._currentIndex + 1;
+    return (this._currentIndex + 1)%this._images.length;
   }
   prev() {
-    return this._currentIndex - 1;
+    return (this._currentIndex - 1+this._images.length)%this._images.length;
   }
 }
