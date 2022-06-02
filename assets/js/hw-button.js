@@ -9,11 +9,3 @@ function hwButtonHandler() {
 
 hwButton.addEventListener("click", hwButtonHandler);
 
-// var count = 0;
-// function clickButton() {
-//   count += 1;
-//   document.getElementById("hw-button").innerHTML = count;
-// }
-// console.log(count)
-
-

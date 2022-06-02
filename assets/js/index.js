@@ -28,15 +28,15 @@ const btnSliderHandler =
 // prevBtn.addEventListener("click", f);
 // nextBtn.addEventListener("click", f);
 
-// prevBtn.addEventListener("click", () => {
-//   slider.currentIndex = slider.prevIndex;
-//   updateView();
-// });
+prevBtn.addEventListener("click", () => {
+  slider.currentIndex = slider.prevIndex;
+  updateView();
+});
 
-// nextBtn.addEventListener("click", () => {
-//   slider.currentIndex = slider.nextIndex;
-//   updateView();
-// });
+nextBtn.addEventListener("click", () => {
+  slider.currentIndex = slider.nextIndex;
+  updateView();
+});
 
 //утсановить путь в атрибут src
 function updateView() {
@@ -46,22 +46,19 @@ updateView();
 
 /*-----------------------------------------*/
 
-const unique = document.getElementById("unique");
+const myButton = document.querySelectorAll("div>button");
+const container = document.getElementById("container");
 
-function btnUniqueHandler(event) {
-  console.log('target:', event.target);
-  console.log('currentTarget:', event.currentTarget);
-  // unique.removeEventListener("click", btnUniqueHandler);
-  // unique.disabled = true;
+for (const btn of myButton) {
+  btn.addEventListener(
+    "click",
+    ({
+      target: {
+        dataset: { color },
+      },
+      target,
+    }) => {
+      container.style.backgroundColor = color;
+    }
+  );
 }
-
-unique.addEventListener("click", btnUniqueHandler);
-
-// unique.dispatchEvent(new MouseEvent("click"));
-
-window.addEventListener("click", btnUniqueHandler);
-document.addEventListener("click", btnUniqueHandler);
-document.body.addEventListener("click", btnUniqueHandler);
-
-
-
