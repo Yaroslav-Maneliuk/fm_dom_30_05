@@ -29,4 +29,4 @@ function createCard(actor) {
   return card;
 }
 
-cardsList.append(...HTMLCards);
+// cardsList.append(...HTMLCards);
