@@ -1,0 +1,44 @@
+:root {
+  font-size: 16px;
+  text-align: center;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+}
+
+.cards-container {
+  max-width: 1100px;
+  margin: auto;
+}
+
+.cards-list {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+.card-wrapper {
+  margin: 2rem 0;
+  border: 2px solid #ddd;
+}
+
+.card-container {
+}
+
+.card-photo {
+  width: 200px;
+  height: 250px;
+  object-fit: cover;
+}
+
+.card-fullname,
+.card-description {
+  margin: 1rem 0;
+}
