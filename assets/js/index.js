@@ -12,23 +12,17 @@ function createCard(actor) {
   const container = document.createElement("article");
   container.classList.add("card-container");
 
-  const photoWrapper = document.createElement("div");
-  photoWrapper.classList.add("card-photo-wrapper");
+  // const photoWrapper = document.createElement("div");
+  // photoWrapper.classList.add("card-photo-wrapper");
 
-  const initials = document.createElement("div");
-  initials.classList.add("card-initials");
-  initials.style.backgroundColor = stringToColour(actor.name);
-  initials.append(
-    document.createTextNode(actor.name[0] || "NN")
-  ); /* homework */
+  // const initials = document.createElement("div");
+  // initials.classList.add("card-initials");
+  // initials.style.backgroundColor = stringToColour(actor.name);
+  // initials.append(
+  //   document.createTextNode(actor.name[0] || "NN")
+  // ); /* homework */
 
-  const photo = document.createElement("img");
-  photo.classList.add("card-photo");
-  photo.setAttribute("src", actor.photo);
-  photo.setAttribute("alt", actor.name);
-  photo.addEventListener("error", photoErrorHandler);
-
-  photoWrapper.append(initials, photo);
+  // photoWrapper.append(initials, createImage(actor));
 
   const fullName = document.createElement("h2");
   fullName.classList.add("card-fullName");
@@ -47,6 +41,31 @@ function createCard(actor) {
 }
 
 cardsList.append(...HTMLCards);
+
+function createImage({photo, name}){
+  const img = document.createElement("img");
+  img.classList.add("card-photo");
+  img.setAttribute("src", photo);
+  img.setAttribute("alt", name);
+  img.addEventListener("error", photoErrorHandler);
+  return img;
+}
+
+function createWrapper(actor){
+  const photoWrapper = document.createElement("div");
+  photoWrapper.classList.add("card-photo-wrapper");
+
+  const initials = document.createElement("div");
+  initials.classList.add("card-initials");
+  initials.style.backgroundColor = stringToColour(actor.name);
+  initials.append(
+    document.createTextNode(actor.name[0] || "NN")
+  ); /* homework */
+
+  photoWrapper.append(initials, createImage(actor));
+}
+
+
 
 /* handler */
 
