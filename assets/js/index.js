@@ -1,22 +1,63 @@
 "use strict";
+const state = [];
+const form = document.getElementById("rootForm");
+const list = document.getElementById("list");
+const pattern = /^[A-Z][a-z]{1,12}$/;
 
-const messages = [];
-const form = document.forms.rootForm;
-const list = document.getElementById('list');
-
-const pattern = /^([A-Z][a-z]+ [A-Z]\.)|([А-Я][а-я]+ [А-Я]\.)$/g
-
-form.addEventListener('submit', (e)=>{
+form.addEventListener("submit", (e) => {
   e.preventDefault();
-  //при нажатии на кнопку Send добавлять значение из инпута в массив
-  //в том случае если оно не пустое
-  const inputValue = e.target.elements.inputText.value.trim();
-  if(pattern.test(inputValue)){
-    messages.push(inputValue);
-    //добавить автоматическую очистку формы
-    e.target.reset();
+  const {
+    target,
+    target: {
+      elements: { inputText },
+    },
+  } = e;
+  const inputValue = inputText.value.trim();
+  if (pattern.test(inputValue)) {
+    state.push(inputValue);
+    target.reset();
+    const li = createElement(
+      "li",
+      { classNames: ["item"] },
+      document.createTextNode(inputValue)
+    );
+    const btn = createElement(
+      "button",
+      { typeEvent: "click", handlerEvent: deleteBtnHandler.bind(li) },
+      document.createTextNode("x")
+    );
+    li.append(btn);
+    list.append(li);
   }
-  //HOMEWORK
-  //рендерить  в список все сообщения из массива
-  console.log(messages);
-})
+});
+
+function deleteBtnHandler({target}){
+  // target.parentElement.remove();
+  this.remove();
+}
+
+/**
+ *
+ * @param {string} tag
+ * @param {object} options
+ * @param {string[]} options.classNames
+ * @param {string} options.typeEvent
+ * @param {function} options.handlerEvent
+ * @param {objects} children
+ * @returns
+ */
+function createElement(
+  tag,
+  { classNames = [], typeEvent = "", handlerEvent = null },
+  ...children
+) {
+  const element = document.createElement(tag);
+  if (classNames.length) {
+    element.classList.add(...classNames);
+  }
+  if (handlerEvent) {
+    element.addEventListener(typeEvent, handlerEvent);
+  }
+  element.append(...children);
+  return element;
+}
