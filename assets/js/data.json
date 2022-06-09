@@ -1,0 +1,26 @@
+[
+{
+  "name": "Elon",
+  "surname": "Musk",
+  "age": 50,
+  "isMale": true,
+  "isUkraine": null,
+  "children": ["one", "two"],
+  "cars": {
+    "car1": { "color": "red" },
+    "car2": { "color": "pink" }
+  }
+},
+{
+  "name": "Tim",
+  "surname": "Cook",
+  "age": 61,
+  "isMale": true,
+  "isUkraine": null,
+  "brothers": {
+    "brothers1": { "brotherName": "Gerald Cook" },
+    "brothers2": { "brotherName": "Michael Cook" }
+  }
+}
+]
+
