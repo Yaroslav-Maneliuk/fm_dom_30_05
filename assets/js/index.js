@@ -1,53 +1,35 @@
 "use strict";
+const state=[];
+const form = document.getElementById('rootForm');
+const list = document.getElementById('list');
+const pattern = /^[A-Z][a-z]{1,12}$/;
 
-const user = {
-  name: "Elon",
-  surname: "Musk",
-  age: 50,
-  getfullName() {
-    return `${this.name} ${this.surname}`;
-  },
-  isMale: true,
-  pet: undefined,
-  isUkraine: null,
-  [Symbol("test")]: 123,
-  children: ["one", "two"],
-  cars: {
-    car1: { color: "red" },
-    car2: { color: "pink" },
-  },
-};
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const {target, target:{elements:{inputText}}} = e;
+  const inputValue = inputText.value.trim();
+  if(pattern.test(inputValue)){
+    state.push(inputValue);
+    target.reset();
+    const li = createElement('li',{classNames:['item']},document.createTextNode(inputValue));
+    /* Добавить в li кнопку с крестиком */
+    list.append(li);
+  }
+});
 
-console.log(user);
-const serializeUser = JSON.stringify(user);
-console.log(serializeUser);
-
-
-const deserializeUser = JSON.parse(serializeUser);
-console.log(deserializeUser);
-
-
-const user2 = {
-  name: "Tim",
-  surname: "Cook",
-  age: 61,
-  getfullName() {
-    return `${this.name} ${this.surname}`;
-  },
-  isMale: true,
-  pet: undefined,
-  isUkraine: null,
-  [Symbol("test")]: 123,
-  brothers: {
-    brothers1: { brotherName: "Gerald Cook" },
-    brothers2: { brotherName: "Michael Cook" },
-  },
-};
-
-console.log(user2);
-const serializeUser2 = JSON.stringify(user2);
-console.log(serializeUser2);
-
-
-const deserializeUser2 = JSON.parse(serializeUser2);
-console.log(deserializeUser2);
+/**
+ * 
+ * @param {string} tag 
+ * @param {object} options 
+ * @param {string[]} options.classNames
+ * @param {objects} children 
+ * @returns 
+ */
+ function createElement(tag, {classNames=[]}, ...children){
+  const element = document.createElement(tag);
+  if(classNames.length){
+    element.classList.add(...classNames);
+  }  
+  element.append(...children);
+  return element;
+}
